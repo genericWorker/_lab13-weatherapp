@@ -5,21 +5,11 @@ body {
   align-items: center;
   height: 100vh;
   font-family: 'Open Sans', sans-serif;
-  
-  /* 1. Set a dark background color first so the text is readable immediately */
   background-color: #1b1b1b; 
-  
-  /* 2. Add your image */
   background-image: url('https://images.unsplash.com/photo-1534088568595-a066f7104211?auto=format&fit=crop&w=1920&q=80');
-  
-  /* 3. Ensure it covers the screen properly */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-h2 {
-  display:inline;
 }
 
 .card {
@@ -30,25 +20,16 @@ h2 {
   width: 100%;
   max-width: 420px;
   margin: 1em;
+  text-align: left; /* Aligns general text to the left */
 }
 
+/* SEARCH SECTION */
 .search {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-button {
-  margin: 0.5em;
-  border-radius: 50%;
-  border: none;
-  height: 44px;
-  width: 44px;
-  outline: none;
-  background: #7c7c7c2b;
-  color: white;
-  cursor: pointer;
-  transition: 0.2s ease-in-out;
+  /* Reduced margin to bring the error/weather much closer */
+  margin-bottom: 5px; 
 }
 
 input.search-bar {
@@ -63,46 +44,152 @@ input.search-bar {
   width: calc(100% - 100px);
 }
 
+button {
+  /* Change margin from 0.5em to only horizontal margin */
+  margin: 0 0 0 10px; 
+  border-radius: 50%;
+  border: none;
+  height: 44px;
+  width: 44px;
+  background: #7c7c7c2b;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 button:hover {
   background: #7c7c7c6b;
 }
 
-h1.temp {
+/* WEATHER MAIN INFO */
+.city {
   margin: 0;
-  margin-bottom: 0.4em;
 }
 
+.time {
+  font-size: small;
+  margin-bottom: 1em;
+  opacity: 0.8;
+}
+
+h1.temp {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.feels_like {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+/* HI/LOW SECTION */
+.temp-range {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start; /* Aligns Hi/Low to the left */
+}
+
+.temp-range label {
+  font-weight: bold;
+  margin-right: 4px;
+  opacity: 0.8;
+}
+
+/* Removes the blank lines and indentation */
 .flex {
   display: flex;
   align-items: center;
+  justify-content: flex-start; 
+  margin: 0;           /* Removes the "blank lines" (top and bottom) */
+  padding: 0;          /* Ensures no internal padding is adding space */
+  width: 100%;
+  height: 50px;        /* Limits height to the size of the icon */
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  margin-left: -12px;  /* Pulls the icon left to align perfectly with text */
+  display: block;
 }
 
 .description {
   text-transform: capitalize;
-  margin-left: 8px;
+  margin: 0;           /* Removes any default paragraph margins */
+  padding: 0;
+  line-height: 1;      /* Prevents text height from creating gaps */
 }
 
+/* Tightens the space above the icon section */
+.temp-range {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  margin-bottom: 0;    /* Removes space below Hi/Low */
+}
+
+/* BOTTOM DETAILS */
+.humidity, .wind-details {
+  margin-bottom: 0.5em;
+}
+
+.footnote {
+  font-size: 0.8rem;
+  margin-top: 1em; 
+  color: bisque;
+  opacity: 0.7;
+}
+
+/* LOADING STATE */
 .weather.loading {
   visibility: hidden;
   max-height: 20px;
-  position: relative;
 }
 
 .weather.loading:after {
   visibility: visible;
   content: "Loading...";
   color: white;
-  position: absolute;
-  top: 0;
-  left: 20px;
+  display: block;
 }
 
-.time {
-  font-size: small;
-  margin-bottom: 1em;
+/* Hide the entire weather section when it has the loading class */
+.weather.loading {
+  display: none;
 }
-.footnote {
-  font-size: small;
-  margin-top: .3em; 
-  color:bisque;
+
+/* Create a loading message that only shows when the weather div is loading */
+.card:has(.weather.loading)::after {
+  content: "Loading weather...";
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.search-hint {
+  font-size: 0.75rem;
+  margin-top: 1.5rem;
+  opacity: 0.6;
+  font-style: italic;
+  line-height: 1.4;
+  color: #ddd9fc; /* Matching your theme's light purple/white */
+}
+
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  text-align: center;
+  display: block;
+  margin: 0; /* Zero margin when empty */
+  line-height: 1;
+}
+
+/* Adds a tiny gap only when there is actually an error message */
+.error-message:not(:empty) {
+  margin-bottom: 10px;
+  margin-top: 2px;
 }

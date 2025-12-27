@@ -16,10 +16,11 @@ let weather = {
     apiKey: "82005d27a116c2880c8f0fcb866998a0",
     
     fetchWeather: function (city) {
+        document.querySelector(".error-message").innerText = "";
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=${units}&appid=${this.apiKey}`)
             .then((response) => {
                 if (!response.ok) {
-                    alert("No weather found.");
+                    document.querySelector(".error-message").innerText = "City not found. Please try again.";
                     throw new Error("No weather found.");
                 }
                 userCity = city;
@@ -51,7 +52,6 @@ let weather = {
     
     // 2. Reveal the weather container
     document.querySelector(".weather").classList.remove("loading");
-
     // 3. Fetch New Background from Unsplash
     fetch(`https://api.unsplash.com/search/photos?query=${name}&orientation=landscape&client_id=${unsplashKey}`)
         .then(res => {

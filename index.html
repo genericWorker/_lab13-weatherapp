@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weathtuer App</title>
+  <title>Weather App</title>
   <link rel="preload" as="image" href="https://images.unsplash.com/photo-1534088568595-a066f7104211?auto=format&fit=crop&w=1920&q=80">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
@@ -22,20 +22,31 @@
           </path>
         </svg></button>
     </div>
+    <span class="error-message"></span>
     <div class="weather loading">
-      <h2 class="city">Weather in Denver, CO</span></h2>
+      <h2 class="city">Weather in Denver, CO</h2>
       <div class="time"></div>
       <h1 class="temp">51° C</h1>
-      <span class="feels_like">Feels like 25° C</span><br>
-      <span class="temp_max"><Label>Hi </Label></span><span class="temp_min"><Label> Low</Label> 23</span>
+      <span class="feels_like">Feels like 25° C</span>
+      <div class="temp-range">
+      <span class="temp_max"><label>Hi</label> <span class="max-val">-2°C</span></span>
+      <span class="temp_min"><label>Low</label> <span class="min-val">-4.16°C</span></span>
+      </div>
+ 
       <div class="flex">
         <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="icon" />
         <div class="description">Cloudy</div>
       </div>
       <div class="humidity">Humidity: 60%</div>
-      <span class="wind">Wind speed: 6.2 km/h </span> <span class="deg"><label> Direction:</label>150</span>
-      <div class="footnote">*North 0°, East 90°, South 180°,  West 270° </div>
+      
+      <div class="wind-details">
+      <span class="wind">Wind speed: 6.2 km/h</span> 
+      <span class="deg"><label>Direction:</label> 150°</span>
+      </div>
+       <p class="search-hint">*Type any city name. For better accuracy, use a comma and country code (e.g., London, UK).
+       </p>  
     </div>
   </div>
-</body>
+ 
+</div> 
 </html>
