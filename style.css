@@ -176,7 +176,7 @@ h1.temp {
   opacity: 0.6;
   font-style: italic;
   line-height: 1.4;
-  color: #ddd9fc; /* Matching your theme's light purple/white */
+  color: hsl(231, 85%, 92%); /* Matching your theme's light purple/white */
 }
 
 .error-message {
